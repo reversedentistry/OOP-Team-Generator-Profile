@@ -56,3 +56,21 @@ const teamManager = [
         }
     }
 ]
+
+const engineer = [
+    {
+        type: "input", 
+        name: "engiName",
+        message: "Enter the name of the engineer."
+    }, 
+    {
+        type: "input", 
+        name: "engiId",
+        message: "Enter the ID of the engineer."  
+    }, 
+    {
+        type: "input", 
+        name: "engiEmail",
+        message: "Enter the email of the engineer."
+    }
+]
