@@ -77,6 +77,20 @@ const engineer = [
         type: "input",
         name: "engiGithub",
         message: "Enter the GitHub username of the engineer."
+    },
+    {
+        type: "checkbox",
+        name: "teamAdditions",
+        message: "Would you like to add another team member?",
+        choices: ["Engineer", "Intern", "None"],
+        validate: async (checkbox) => {
+            if (checkbox.length == 1) {
+                return true;
+            } else {
+                console.log("Please choose one option.");
+                return false;
+            }
+        }
     }
 ]
 
@@ -101,4 +115,22 @@ const intern = [
         name: "internSchool",
         message: "Enter the school of the intern."
     },
-]
+    {
+        type: "checkbox",
+        name: "teamAdditions",
+        message: "Would you like to add another team member?",
+        choices: ["Engineer", "Intern", "None"],
+        validate: async (checkbox) => {
+            if (checkbox.length == 1) {
+                return true;
+            } else {
+                console.log("Please choose one option.");
+                return false;
+            }
+        }
+    }
+]; 
+
+function createProfile(data) {
+    
+}
