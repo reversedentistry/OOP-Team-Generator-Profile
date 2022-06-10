@@ -156,10 +156,11 @@ const intern = [
 function createInternProfile() {
     inquirer.prompt(intern)
     .then((data) => {
-        createCards.createInternCard(data); 
-        if (data.teamAdditions === "Engineer") {
+        const newIntern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
+        createCards.createInternCard(newIntern); 
+        if (data.teamAdditions[0]) {
             createEngiProfile();
-        } else if (data.teamAdditions === "Intern") {
+        } else if (data.teamAdditions[1]) {
             createInternProfile()
         } else {
             return;
@@ -170,10 +171,11 @@ function createInternProfile() {
 function createEngiProfile() {
     inquirer.prompt(engineer) 
     .then((data) => {
-        createCards.createEngineerCard(data); 
-        if (data.teamAdditions === "Engineer") {
+        const newEngineer = new Engineer(data.engiName, data.engiId, data.engiEmail, data.engiGithub)
+        createCards.createEngineerCard(newEngineer); 
+        if (data.teamAdditions[0]) {
             createEngiProfile();
-        } else if (data.teamAdditions === "Intern") {
+        } else if (data.teamAdditions[1]) {
             createInternProfile()
         } else {
             return;
@@ -185,11 +187,12 @@ function createEngiProfile() {
 function createManagerProfile() {
     inquirer.prompt(teamManager)
     .then((data) => {
-        const newManager = new Manager(data.managerName, data.id, data.email, data.officeNumber); 
+        const newManager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber);
+        console.log(data.teamAdditions);
         createCards.createManagerCard(newManager); 
-        if (data.teamAdditions === "Engineer") {
+        if (data.teamAdditions[0]) {
             createEngiProfile();
-        } else if (data.teamAdditions === "Intern") {
+        } else if (data.teamAdditions[1]) {
             createInternProfile()
         } else {
             return;
@@ -201,3 +204,5 @@ function createProfile(data) {
     fs.writeFileSync("./dist/index.html", data)
     
 }
+
+createManagerProfile(); 
