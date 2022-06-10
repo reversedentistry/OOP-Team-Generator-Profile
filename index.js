@@ -1,6 +1,14 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+const Employee = require("./lib/employee");
+const Manager = require("./lib/manager"); 
+const Engineer = require("./lib/engineer"); 
+const Intern = require("./lib/intern"); 
+
+const createCards = require("./src/template.js");
+
+
 const teamManager = [
     {
         type: "input",
@@ -15,6 +23,20 @@ const teamManager = [
             }
         }
     },
+    {
+        type: "input",
+        name: "managerId",
+        message: "Enter the manager's ID.",
+        validate: async (input) => {
+            if (input) {
+                return true;
+            } else {
+                console.log("Manager ID required");
+                return false;
+            }
+        }
+    },
+    
     {
         type: "input",
         name: "managerEmail",
@@ -131,6 +153,51 @@ const intern = [
     }
 ]; 
 
+function createInternProfile() {
+    inquirer.prompt(intern)
+    .then((data) => {
+        createCards.createInternCard(data); 
+        if (data.teamAdditions === "Engineer") {
+            createEngiProfile();
+        } else if (data.teamAdditions === "Intern") {
+            createInternProfile()
+        } else {
+            return;
+        }
+    }) 
+};
+
+function createEngiProfile() {
+    inquirer.prompt(engineer) 
+    .then((data) => {
+        createCards.createEngineerCard(data); 
+        if (data.teamAdditions === "Engineer") {
+            createEngiProfile();
+        } else if (data.teamAdditions === "Intern") {
+            createInternProfile()
+        } else {
+            return;
+        }
+    })
+    
+};
+
+function createManagerProfile() {
+    inquirer.prompt(teamManager)
+    .then((data) => {
+        const newManager = new Manager(data.managerName, data.id, data.email, data.officeNumber); 
+        createCards.createManagerCard(newManager); 
+        if (data.teamAdditions === "Engineer") {
+            createEngiProfile();
+        } else if (data.teamAdditions === "Intern") {
+            createInternProfile()
+        } else {
+            return;
+        }
+    })
+}
+
 function createProfile(data) {
+    fs.writeFileSync("./dist/index.html", data)
     
 }
