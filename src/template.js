@@ -39,7 +39,7 @@ const createInternCard = (intern) => {
     </div>`
 };
 
-const createHTML = (html) => {
+const startHTML = () => {
     return `<!DOCTYPE html>
     <html>
     
@@ -54,18 +54,23 @@ const createHTML = (html) => {
         <header>
             <h1>My Team</h1>
         </header>
-        <main id="profiles"></main>
+        <main id="profiles">`
+}; 
+
+const endHTML = () => {
+    return `</main>
     </body>
     
     </html>`
-}; 
+}
 
 
 module.exports = {
     createManagerCard,
     createEngineerCard,
     createInternCard,
-    createHTML
+    startHTML,
+    endHTML
 }
 
 
