@@ -159,12 +159,12 @@ function createInternProfile() {
         const newIntern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
         const internHtml = createCards.createInternCard(newIntern); 
         addProfile(internHtml);
-        if (data.teamAdditions[0]) {
+        if (data.teamAdditions === "Engineer") {
             createEngiProfile();
-        } else if (data.teamAdditions[1]) {
+        } else if (data.teamAdditions === "Intern") {
             createInternProfile()
         } else {
-            return;
+            endProfile();
         }
     }) 
 };
@@ -175,12 +175,12 @@ function createEngiProfile() {
         const newEngineer = new Engineer(data.engiName, data.engiId, data.engiEmail, data.engiGithub)
         const engiHtml = createCards.createEngineerCard(newEngineer); 
         addProfile(engiHtml); 
-        if (data.teamAdditions[0]) {
+        if (data.teamAdditions === "Engineer") {
             createEngiProfile();
-        } else if (data.teamAdditions[1]) {
-            createInternProfile()
+        } else if (data.teamAdditions === "Intern") {
+            createInternProfile();
         } else {
-            return;
+            endProfile();
         }
     })
     
@@ -191,19 +191,23 @@ function createManagerProfile() {
     .then((data) => {
         const newManager = new Manager(data.managerName, data.managerId, data.managerEmail, data.officeNumber);
         const managerHtml = createCards.createManagerCard(newManager);
-        if (data.teamAdditions[0]) {
+        if (data.teamAdditions == 'Engineer') {
+            addProfile(managerHtml);
             createEngiProfile();
-        } else if (data.teamAdditions[1]) {
+        } else if (data.teamAdditions == 'Intern') {
+            addProfile(managerHtml);
             createInternProfile()
         } else {
             addProfile(managerHtml);
+            endProfile();
         }
+        console.log(data.teamAdditions);
     })
 }
 
 function createProfiles() {
-    let html = createCards.createHTML();
-    fs.writeFileSync("./dist/index.html", html)
+    let startHtml = createCards.startHTML();
+    fs.writeFileSync("./dist/index.html", startHtml)
     createManagerProfile();
 
 };
@@ -211,5 +215,10 @@ function createProfiles() {
 function addProfile(data) {
     fs.appendFileSync("./dist/index.html", data)
 };
+
+function endProfile() {
+    let endHtml = createCards.endHTML();
+    fs.appendFileSync("./dist/index.html", endHtml);
+}
 
 createProfiles(); 
