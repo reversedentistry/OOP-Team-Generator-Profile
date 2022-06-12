@@ -159,9 +159,9 @@ function createInternProfile() {
         const newIntern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool);
         const internHtml = createCards.createInternCard(newIntern); 
         addProfile(internHtml);
-        if (data.teamAdditions === "Engineer") {
+        if (data.teamAdditions == "Engineer") {
             createEngiProfile();
-        } else if (data.teamAdditions === "Intern") {
+        } else if (data.teamAdditions == "Intern") {
             createInternProfile()
         } else {
             endProfile();
@@ -175,9 +175,9 @@ function createEngiProfile() {
         const newEngineer = new Engineer(data.engiName, data.engiId, data.engiEmail, data.engiGithub)
         const engiHtml = createCards.createEngineerCard(newEngineer); 
         addProfile(engiHtml); 
-        if (data.teamAdditions === "Engineer") {
+        if (data.teamAdditions == "Engineer") {
             createEngiProfile();
-        } else if (data.teamAdditions === "Intern") {
+        } else if (data.teamAdditions == "Intern") {
             createInternProfile();
         } else {
             endProfile();
