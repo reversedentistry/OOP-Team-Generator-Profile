@@ -1,5 +1,5 @@
 const createManagerCard = (manager) => {
-    return `<div class="card col-12 col-md-5 col-lg-2">
+    return `<div class="card col-12 col-md-5 col-lg-2 shadow bg-body rounded">
     <div class="card-body">
       <h5 class="card-title p-3 mb-0 bg-info text-dark">${manager.name}</h5>
       <h6 class="card-title p-3 mt-0 bg-info text-dark"><i class="fa-solid fa-desktop"></i></i> Manager</h6>
@@ -13,7 +13,7 @@ const createManagerCard = (manager) => {
 };
 
 const createEngineerCard = (engineer) => {
-    return `<div class="card col-12 col-md-5 col-lg-2">
+    return `<div class="card col-12 col-md-5 col-lg-2 shadow bg-body rounded">
     <div class="card-body">
       <h5 class="card-title p-3 mb-0 bg-info text-dark">${engineer.name}</h5>
       <h6 class="card-title p-3 mt-0 bg-info text-dark"><i class="fa-solid fa-screwdriver-wrench"></i> Engineer</h6>
@@ -29,7 +29,7 @@ const createEngineerCard = (engineer) => {
 };
 
 const createInternCard = (intern) => {
-    return `<div class="card col-12 col-md-5 col-lg-2">
+    return `<div class="card col-12 col-md-5 col-lg-2 shadow bg-body rounded">
     <div class="card-body">
       <h5 class="card-title p-3 mb-0 bg-info text-dark">${intern.name}</h5>
       <h6 class="card-title p-3 mt-0 bg-info text-dark"><i class="fa-solid fa-book-open"></i> Intern</h6>
@@ -56,9 +56,9 @@ const startHTML = () => {
     </head>
     <body>
         <header>
-            <h1 class="text-center.bg-success.bg-gradient">My Team</h1>
+            <h1 class="text-center p-3 mb-2 bg-success text-white">My Team</h1>
         </header>
-        <main class="d-flex justify-content-center">`
+        <main class="d-flex justify-content-evenly align-items-center">`
 }; 
 
 const endHTML = () => {
