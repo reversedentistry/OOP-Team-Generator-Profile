@@ -201,7 +201,6 @@ function createManagerProfile() {
             addProfile(managerHtml);
             endProfile();
         }
-        console.log(data.teamAdditions);
     })
 }
 
