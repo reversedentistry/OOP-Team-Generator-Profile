@@ -35,7 +35,14 @@ npm test
 ### Usage Instructions
 Once the application has been started, a series of prompts will open in the terminal that will ask questions for the user to answer. All team member types will be asked these types of questions: name, ID, and email. Team managers are asked the unique question of what their office number is, engineers are asked for their GitHub usernames, while interns are uniquely asked for the name of their schools. There can only be one manager, but you may add as many engineers and interns as you like. When you have no more team members to add, the final HTML page will be generated within the folder in the application titled "dist". 
 
+[Watch a demo video.](https://youtu.be/0AMYDFnwX9U)
+
 ### Screenshots
+![First screenshot of application](./assets/screenshot1.PNG)
+
+![Second screenshot](./assets/screenshot2.PNG)
+
+![Third screenshot](./assets/screenshot3.PNG)
 
 ## License
 This project is MIT licensed. 
